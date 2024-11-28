@@ -1,4 +1,4 @@
-public class User {
+public abstract class User {
 
     protected String name;
     protected String email;
@@ -28,4 +28,6 @@ public class User {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
+    abstract public void menu();
 }
