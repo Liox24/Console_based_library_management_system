@@ -1,14 +1,34 @@
+import java.util.Scanner;
+
 public class Admin extends User {
 
     public Admin(String name) {
         super(name);
+        this.operation = new IOOperation[] {
+                new AddBook(),
+                new ViewBooks(),
+                new DeleteBook(),
+                new Search(),
+                new DeleteAllData(),
+                new ViewOrders(),
+                new Exit()
+        };
     }
 
     public Admin(String name, String email, String phoneNumber) {
         super(name, email, phoneNumber);
+        this.operation = new IOOperation[] {
+                new AddBook(),
+                new ViewBooks(),
+                new DeleteBook(),
+                new Search(),
+                new DeleteAllData(),
+                new ViewOrders(),
+                new Exit()
+        };
     }
 
-    public void menu() {
+    public void menu(Database database, User user) {
 
         System.out.println("---------------------------------------------------");
         System.out.println("1. View Books");
@@ -20,5 +40,9 @@ public class Admin extends User {
         System.out.println("7. Exit");
         System.out.println("---------------------------------------------------");
 
+        Scanner s = new Scanner(System.in);
+        int n = s.nextInt();
+        this.operation[n - 1].oper(database, user);
+        s.close();
     }
 }

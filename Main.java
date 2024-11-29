@@ -27,6 +27,7 @@ public class Main {
                     break;
                 default:
                     System.out.println("Bye...");
+                    
             }
 
         } while (n != 0);
@@ -41,7 +42,7 @@ public class Main {
         int n = database.login(phoneNumber, email);
         if (n != -1) {
             User user = database.getUser(n);
-            user.menu();
+            user.menu(database, user);
         } else {
             System.out.println("User does not exist...!");
         }
@@ -66,5 +67,6 @@ public class Main {
             user = new NormalUser(name, email, phoneNumber);
         }
         database.AddUser(user);
+        user.menu(database, user);
     }
 }
